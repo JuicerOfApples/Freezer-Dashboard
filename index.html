@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    
+    <div id="login-container" class="container">
+        <h1 class="main-title">Dashboard Access</h1>
+        <p style="text-align: center; color: #888; margin-bottom: 20px;">Please enter your ID to access the inventory.</p>
+        
+        <input type="password" id="id-input" class="name-input" placeholder="Enter ID..." style="text-align: center; margin-bottom: 15px;">
+        <button id="login-btn" class="add-row-btn">Unlock</button>
+        
+        <p id="login-message" style="text-align: center; margin-top: 15px; height: 20px;"></p>
+    </div>
+
+    <div id="app-container" class="container" style="display: none;">
         <h1 class="main-title">Freezer Inventory Dashboard</h1>
         
         <div class="table-container">
@@ -22,17 +33,16 @@
                     </tr>
                 </thead>
                 <tbody id="table-body">
-                </tbody>
+                    </tbody>
             </table>
         </div>
         
         <button id="add-new-btn" class="add-row-btn">+ Add New Blank Row</button>
     </div>
-    <script type="module" src="script.js"></script>
 
     <div id="recipe-modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeRecipe()">✕</span>
+            <span class="close-btn" id="close-recipe-btn">✕</span>
             <h2 id="recipe-title" class="modal-title">Recipe Details</h2>
             
             <div class="table-container">
@@ -45,12 +55,14 @@
                         </tr>
                     </thead>
                     <tbody id="ingredients-body">
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
             
-            <button onclick="addIngredient()" class="add-row-btn" style="margin-top: 15px;">+ Add Ingredient</button>
+            <button id="add-ingredient-btn" class="add-row-btn" style="margin-top: 15px;">+ Add Ingredient</button>
         </div>
     </div>
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>
