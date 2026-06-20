@@ -1,5 +1,6 @@
- 
+// ==========================================
 // SECTION 1: FIREBASE CONFIGURATION
+// ==========================================
 // We import the tools needed to connect to Google's cloud database
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -23,8 +24,9 @@ const db = getFirestore(app);
 const inventoryRef = doc(db, "freezer", "inventoryData");
 
 
- 
+// ==========================================
 // SECTION 2: GLOBAL VARIABLES
+// ==========================================
 // These arrays hold our data whilst the app is running
 let freezerInventory = [];
 let currentRecipeId = null;
@@ -38,13 +40,14 @@ const tableBody = document.getElementById('table-body');
 const ingredientsBody = document.getElementById('ingredients-body');
 
 
- 
+// ==========================================
 // SECTION 3: LOGIN LOGIC
+// ==========================================
 // This checks if the user entered the correct ID to view the dashboard
 document.getElementById('login-btn').addEventListener('click', () => {
     const enteredID = idInput.value;
     
-    if (enteredID === "1") {
+    if (enteredID === "123") {
         // If correct, hide the login screen and show the app
         loginContainer.style.display = 'none';
         appContainer.style.display = 'block';
@@ -60,8 +63,10 @@ document.getElementById('login-btn').addEventListener('click', () => {
 });
 
 
- 
+// ==========================================
 // SECTION 4: DATABASE FETCHING & SAVING
+// ==========================================
+
 // Pulls data from Firebase and prepares it for the screen
 async function loadData() {
     try {
@@ -98,8 +103,9 @@ async function saveAndRender() {
 }
 
 
- 
+// ==========================================
 // SECTION 5: TEXT FORMATTING HELPER
+// ==========================================
 // Capitalises the first letter of a word, unless it starts with a forward slash
 function formatInputText(text) {
     if (!text) return text;
@@ -110,8 +116,9 @@ function formatInputText(text) {
 }
 
 
- 
+// ==========================================
 // SECTION 6: MAIN TABLE RENDERING
+// ==========================================
 // Rebuilds the entire freezer list based on the current data array
 function renderTable() {
     tableBody.innerHTML = ''; 
@@ -163,8 +170,10 @@ function renderTable() {
 }
 
 
- 
+// ==========================================
 // SECTION 7: MAIN TABLE ACTIONS
+// ==========================================
+
 function updateCount(id, changeAmount) {
     const item = freezerInventory.find(food => food.id === id);
     if (item) {
@@ -201,8 +210,10 @@ document.getElementById('add-new-btn').addEventListener('click', () => {
 });
 
 
- 
+// ==========================================
 // SECTION 8: DRAG AND DROP LOGIC
+// ==========================================
+
 function handleDragStart(e, id) { 
     e.dataTransfer.setData('text/plain', id); 
 }
@@ -228,8 +239,10 @@ function handleDrop(e, targetId) {
 }
 
 
- 
+// ==========================================
 // SECTION 9: RECIPE MODAL LOGIC
+// ==========================================
+
 function openRecipe(id) {
     currentRecipeId = id;
     const item = freezerInventory.find(food => food.id === id);
